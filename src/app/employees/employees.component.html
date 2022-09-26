@@ -1,0 +1,20 @@
+<div class="container">
+    <table class="table table-brodered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Time in Months</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [ngStyle]="{backgroundColor:getColor(employee)}" *ngFor="let employee of employeeCal">
+                
+                <td><span>{{employee.EmployeeName}}</span></td>
+                <td><span>{{employee.TotalTimeInMonth}} hrs</span></td>
+                <td><span><a href="#">Edit</a></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <div  id="piechart" style="width: 900px; height: 500px;"></div>
+</div>
