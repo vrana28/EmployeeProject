@@ -28,5 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Landing Page                  
 :-------------------------:
-<img src="cryptoPanda1.png" alt="Home" width="300">
+<img src="page.png" alt="Home" width="300">
 
