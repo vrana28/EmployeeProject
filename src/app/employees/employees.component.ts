@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 declare var google: any;
 
 
@@ -61,7 +62,10 @@ export class EmployeesComponent implements OnInit {
     return this.employeeCal.find(x => x.EmployeeName === name);
   }
 
- 
+  validateTime(e:Employee){
+    if(e.EndTimeUtc>e.StarTimeUtc) return true;
+    return false;
+  }
 
   getEmployees(){
     this.httpCLient.get<any>('https://rc-vault-fap-live-1.azurewebsites.net/api/gettimeentries?code=vO17RnE8vuzXzPJo5eaLLjXjmRW07law99QTD90zat9FfOQJKKUcgQ==').subscribe(
@@ -77,7 +81,7 @@ export class EmployeesComponent implements OnInit {
             console.log(indeks); 
           }
           indeks = this.employeeCal.findIndex(x => x.EmployeeName === element.EmployeeName);
-          this.employeeCal[indeks].TotalTimeInMonth += this.calculatediff(element);            
+          if(this.validateTime(element))this.employeeCal[indeks].TotalTimeInMonth += this.calculatediff(element);            
         });
         this.employeeCal.sort((a,b)=>b.TotalTimeInMonth-a.TotalTimeInMonth);
         google.charts.load('current', {packages: ['corechart']});
